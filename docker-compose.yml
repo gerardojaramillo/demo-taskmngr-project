@@ -1,0 +1,39 @@
+services:
+
+  demo-taskmngr-db:
+    image: ghcr.io/gerardojaramillo/demo-taskmngr-db:0.0.1
+    container_name: demo-taskmngr-db
+    ports:
+      - 3306:3306
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: 2.0
+    environment:
+      - MYSQL_DATABASE=demo-taskmngr-db
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=America/Mexico_City
+    networks:
+      - demo-taskmngr-net
+    volumes:
+      - demo-taskmngr-vol:/var/lib/mysql
+
+  demo-taskmngr-app:
+    image: ghcr.io/gerardojaramillo/demo-taskmngr-app:0.0.1
+    container_name: demo-taskmngr-app
+    ports:
+      - 8080:8080
+    cpus: 1.0
+    mem_limit: 228m
+    mem_reservation: 128m
+    depends_on:
+      - demo-taskmngr-db
+    networks:
+      - demo-taskmngr-net
+
+networks:
+  demo-taskmngr-net:
+    name: demo-taskmngr-net
+
+volumes:
+  demo-taskmngr-vol:
+    name: demo-taskmngr-vol
