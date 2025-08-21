@@ -56,7 +56,6 @@ El **Demo TaskMngr Project** (`demo-taskmngr-project`) distribuye un archivo `do
 - **Base de Datos** (`demo-taskmngr-db`)  
   Una instancia de **MySQL 8.0.24** para persistencia de datos relacionales.
 
-
 ## Propósito
 El proyecto tiene un fin exclusivamente demostrativo, orientado a mostrar:
 
@@ -64,3 +63,24 @@ El proyecto tiene un fin exclusivamente demostrativo, orientado a mostrar:
 - Cómo realizar despliegues rápidos con Docker Compose.
 - Buenas prácticas de arquitectura en un microservicio básico.
 - Cómo conectar un **frontend ligero con jQuery y CSS** hacia un **backend Spring Boot REST API**.
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/gerardojaramillo/demo-taskmngr-project.git
+```
+
+Go to the project directory
+
+```bash
+  cd eumira-taskmngr-project
+```
+
+Run the project
+
+```bash
+  docker compose up -d
+```
+
