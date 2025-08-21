@@ -1,49 +1,64 @@
-# Demo TaskMngr Project
+# Task Manager Demo
 
-El **Demo TaskMngr Project** (`demo-taskmngr-project`) es un entorno demostrativo que distribuye un archivo `docker-compose.yml`. Este archivo orquesta la ejecución de los siguientes servicios:
+Aplicación de gestión de tareas y proyectos orientada a equipos de trabajo.  
+Permite organizar actividades, priorizarlas y dar seguimiento al avance de manera colaborativa.  
 
-**Aplicación Web** (`demo-taskmngr-app`) Está construida con **Java Ver. 17** como lenguage principal y **Spring Boot Ver. 3.5.0** cómo framework.
+⚠️ **Nota:** Este proyecto tiene fines **demostrativos**. No busca ser un producto completo de producción, sino un ejemplo técnico de arquitectura moderna con **Spring Boot 3.5.0** y buenas prácticas en desarrollo backend.
 
-**Base de Datos** (`demo-taskmngr-db`) Una instancia de **MySQL Ver. 8.0.24** para persistencia de datos relacionales.
 
-El proyecto tiene un propósito exclusivamente demostrativo, orientado a mostrar las operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre entidades de ejemplo.
+## Características principales
+- **Gestión de Tareas (CRUD)**: crear, visualizar, actualizar y eliminar.
+- **Proyectos**: cada tarea pertenece a un proyecto específico.
+- **Priorización**: niveles *High, Medium, Low*.
+- **Asignación de responsables**: soporte multi-usuario.
+- **Etiquetas (Tags)**: clasificación flexible de tareas.
+- **Flujo de trabajo**: estados *Not Started, In Progress, Done*.
+- **Interfaz visual**: tabla central con acciones rápidas.
 
-Este entorno puede utilizarse como referencia para:
 
-- Aprender a estructurar una aplicación Java + Spring Boot con persistencia en MySQL.
-- Probar despliegues rápidos con Docker Compose.
-- Explorar buenas prácticas de arquitectura para microservicios básicos.
+## Beneficios
+- Organización clara de tareas por proyecto.
+- Priorización efectiva y asignación de responsables.
+- Transparencia y seguimiento del progreso en equipo.
+- Base para integrar metodologías ágiles (Scrum, Kanban).
 
-## Docker Installation
 
-You can download Docker desktop in the docker site.
+## Características técnicas
+- **Backend**
+  - **Framework:** Spring Boot 3.5.0 con arquitectura RESTful.
+  - **Persistencia:** Spring JDBC + MySQL con relaciones Many-to-Many (tareas ↔ asignados, tareas ↔ etiquetas).
+  - **Consultas SQL avanzadas:** uso de `JSON_ARRAYAGG` y `JSON_OBJECT` para exponer datos jerárquicos (tarea con asignados y etiquetas).
+  - **Identificadores eficientes:** manejo de `UUID` en formato binario para optimizar índices y referencias.
+  - **Arquitectura limpia:** separación en capas Controller → Service → Repository.
+  - **DTOs y proyecciones** para respuestas optimizadas.
+  - **Manejo de errores:** centralizado con `@ControllerAdvice`.
+  - **Documentación de API:** OpenAPI/Swagger.
+  - **Testing:** JUnit + Testcontainers (base de datos aislada en Docker para pruebas).
 
-```bash
-  https://www.docker.com
-```
-    
-## Run Locally
+- **Frontend**
+  - **Tecnologías utilizadas:** 
+    - **jQuery** para manipulación del DOM y consumo de la API REST.
+    - **HTML5** para estructura semántica.
+    - **CSS3** para estilos y diseño responsive.
+    - **JavaScript** para interactividad y validaciones.
+  - **Diseño enfocado en simplicidad:** UI limpia y minimalista para resaltar la lógica de negocio.
+  - **Integración directa con REST API**: render dinámico de tareas, proyectos, asignados y etiquetas.
 
-Clone the project
 
-```bash
-  git clone https://github.com/gerardojaramillo/demo-taskmngr-project.git
-```
+## Componentes
+El **Demo TaskMngr Project** (`demo-taskmngr-project`) distribuye un archivo `docker-compose.yml` que orquesta los siguientes servicios:
 
-Go to the project directory
+- **Aplicación Web** (`demo-taskmngr-app`)  
+  Construida con **Java 17** y **Spring Boot 3.5.0**.
+  
+- **Base de Datos** (`demo-taskmngr-db`)  
+  Una instancia de **MySQL 8.0.24** para persistencia de datos relacionales.
 
-```bash
-  cd demo-taskmngr-project
-```
 
-Run the containers.
+## Propósito
+El proyecto tiene un fin exclusivamente demostrativo, orientado a mostrar:
 
-```bash
-  docker compose up -d
-```
-
-Open a browser and write in the url bar.
-
-```bash
-  http://localhost:8080/
-```
+- Cómo estructurar una aplicación Java + Spring Boot con persistencia en MySQL.
+- Cómo realizar despliegues rápidos con Docker Compose.
+- Buenas prácticas de arquitectura en un microservicio básico.
+- Cómo conectar un **frontend ligero con jQuery y CSS** hacia un **backend Spring Boot REST API**.
