@@ -1,10 +1,12 @@
-# Task Manager Demo
+# Task Manager Project
 
 Aplicación de gestión de tareas y proyectos orientada a equipos de trabajo.  
 Permite organizar actividades, priorizarlas y dar seguimiento al avance de manera colaborativa.  
 
 ⚠️ **Nota:** Este proyecto tiene fines **demostrativos**. No busca ser un producto completo de producción, sino un ejemplo técnico de arquitectura moderna con **Spring Boot 3.5.0** y buenas prácticas en desarrollo backend.
 
+
+![DB Diagram](.github/images/demo-taskmngr-project.jpg)
 
 ## Características principales
 - **Gestión de Tareas (CRUD)**: crear, visualizar, actualizar y eliminar.
